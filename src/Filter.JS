@@ -1,18 +1,27 @@
-const Filter = ({ onTitleFilterChange, onRatingFilterChange }) => {
-    return (
-      <div className="filter">
-        <input
+import React from 'react'
+
+function FILTER() {
+    const l=useRef(" ");
+    const g=useRef(" ");
+    const [li,setli]=useState("");
+    const [gi,setgi]=useState("");
+  return (
+    <div>
+          <div>
+        <input ref={l}
           type="text"
-          placeholder="Filter by title"
-          onChange={onTitleFilterChange}
+          placeholder="Enter title"
+        
         />
-        <input
+        <input ref={g}
           type="number"
-          placeholder="Filter by rating"
-          onChange={onRatingFilterChange}
+          placeholder="Enter rating"
         />
-      </div>
-    );
-  };
-  
-  export default Filter;
+        <button className='button-85' onClick={()=>setli(l.current.value)||setgi(g.current.value)}>
+  recherche</button>
+</div>
+    </div>
+  )
+}
+
+export default FILTER

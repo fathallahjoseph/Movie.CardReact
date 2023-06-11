@@ -1,12 +1,17 @@
 import React from 'react'
 import MovieList from './MovieList'
 import { useState , useRef} from 'react';
-import Filter from './Filter.JS';
+import Filter from './FILTER.JS';
 function App() {
   const t=useRef("");
   const d=useRef("");
   const r=useRef("");
   const i=useRef();
+  const l=useRef(" ");
+  const g=useRef(" ");
+   const [li,setli]=useState("");
+    const [gi,setgi]=useState("");
+
   const [movies,setMovie]=useState([{
     title:"Titanic",
   description:'Titanic est un film dramatique américain écrit, produit et réalisé par James Cameron, sorti en 1997.',
@@ -26,19 +31,36 @@ function App() {
   ]);
   return (
     <div>
+      
+      <div>
+      <div>
+        <input ref={l}
+          type="text"
+          placeholder="Enter title"
+        
+        />
+        <input ref={g}
+          type="number"
+          placeholder="Enter rating"
+        />
+        <button className='button-85' onClick={()=>setli(l.current.value)||setgi(g.current.value)}>
+  recherche</button>
+</div>
+
+
       <div className='try'><p className='button-84'>To Add Card Film</p></div>
     <div id='inp' >
-      <div class="inp-border a1">
-<input class="input" ref={t} type='text' placeholder="Title Film"></input>
+      <div className="inp-border a1">
+<input className="input" ref={t} type='text' placeholder="Title Film"></input>
 </div>
-<div class="inp-border a2">
-<input  class="input" ref={i} type='text' placeholder="Url Image"></input>
+<div className="inp-border a2">
+<input  className="input" ref={i} type='text' placeholder="Url Image"></input>
 </div>
-<div class="inp-border a4">
-<input  class="input" ref={d} type='text' placeholder="Description Of Film"></input>
+<div className="inp-border a4">
+<input  className="input" ref={d} type='text' placeholder="Description Of Film"></input>
 </div>
-<div class="inp-border a3">
-<input  class="input" ref={r} type='text' placeholder="Rating"></input>  
+<div className="inp-border a3">
+<input  className="input" ref={r} type='text' placeholder="Rating"></input>  
 </div>
 
 <button className='button-85' onClick={()=>setMovie([...movies,{
@@ -47,7 +69,11 @@ function App() {
    imgy:i.current.value,
    rating:r.current.value
   }])}>submit</button> 
-      <MovieList movies={movies}/>
+
+      <MovieList  movies={movies.filter(movie=>movie.title.toLowerCase().includes(li)&&movie.rating.includes(gi))} />
+     
+     
+  </div>
   </div>
   </div>
   )
