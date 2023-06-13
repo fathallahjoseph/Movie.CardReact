@@ -1,16 +1,22 @@
 import React from 'react'
 import MovieList from './MovieList'
 import { useState , useRef} from 'react';
-import Filter from './FILTER.JS';
+import Filter from './Filter';
 function App() {
+  const l=useRef(" ");
+  const g=useRef(" ");
+
   const t=useRef("");
   const d=useRef("");
   const r=useRef("");
   const i=useRef();
-  const l=useRef(" ");
-  const g=useRef(" ");
-   const [li,setli]=useState("");
+  const [li,setli]=useState("");
     const [gi,setgi]=useState("");
+
+const search=()=>{
+  setli(l.current.value)||setgi(g.current.value)
+}
+
 
   const [movies,setMovie]=useState([{
     title:"Titanic",
@@ -33,21 +39,6 @@ function App() {
     <div>
       
       <div>
-      <div>
-        <input ref={l}
-          type="text"
-          placeholder="Enter title"
-        
-        />
-        <input ref={g}
-          type="number"
-          placeholder="Enter rating"
-        />
-        <button className='button-85' onClick={()=>setli(l.current.value)||setgi(g.current.value)}>
-  recherche</button>
-</div>
-
-
       <div className='try'><p className='button-84'>To Add Card Film</p></div>
     <div id='inp' >
       <div className="inp-border a1">
@@ -69,9 +60,11 @@ function App() {
    imgy:i.current.value,
    rating:r.current.value
   }])}>submit</button> 
-
+  <div className='serc'>
+    <h2>Search to your Cart</h2>
+<Filter g={g} l={l} search={search}/>
+</div>
       <MovieList  movies={movies.filter(movie=>movie.title.toLowerCase().includes(li)&&movie.rating.includes(gi))} />
-     
      
   </div>
   </div>

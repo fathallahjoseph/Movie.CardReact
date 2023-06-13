@@ -270,4 +270,21 @@ input{
   top: 0;
   border-radius: 10px;
 }
-
+.serc{
+margin-left: 1000px; background-color: #1111113d; width: 300px;
+margin-top: 100px;
+height: 160px;
+position: fixed;
+}
+.inputs{
+  background-color: transparent;
+  border-radius: 30px;
+  height: 30px;
+}
+.button5{
+ height: 50px;
+  background-color: #00ffd523;
+}
+h2{
+  color: #00ffd5a9;
+}
