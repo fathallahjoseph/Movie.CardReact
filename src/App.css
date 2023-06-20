@@ -288,3 +288,12 @@ position: fixed;
 h2{
   color: #00ffd5a9;
 }
+.card2{  width: 30%;
+  background-color: rgb(226, 136, 136);
+  color: aliceblue;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  border-radius: 40px;
+justify-content: center;
+margin: auto;}

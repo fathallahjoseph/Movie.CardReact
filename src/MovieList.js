@@ -10,7 +10,7 @@ function MovieList(props) {
   { props.movies.map(ob=><MovieCard movie={ob}/>)}
     </div>
     </div>
-
+    
 
    
   )
